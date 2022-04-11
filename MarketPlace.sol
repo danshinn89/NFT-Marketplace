@@ -72,6 +72,7 @@ contract MarketPlace is ERC1155, ERC2981, Ownable {
         string memory _name,
         string memory _company
     ) public payable virtual onlyAdmin returns (uint256) {
+        require(_amount <= 50, "Can't mint more than 50 NFTs);
         require(_price > 0, "Must be at least 1 Wei");
         _setDefaultRoyalty(_msgSender(), 500);
         _tokenIds.increment();
